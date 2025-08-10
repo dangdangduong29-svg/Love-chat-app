@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Love Chat App</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    #chat {
+      width: 300px;
+      background: white;
+      border-radius: 10px;
+      padding: 10px;
+      box-shadow: 0px 0px 10px rgba(0,0,0,0.2);
+    }
+    #messages {
+      height: 200px;
+      overflow-y: auto;
+      border-bottom: 1px solid #ddd;
+      margin-bottom: 10px;
+      padding: 5px;
+    }
+    input {
+      width: 80%;
+      padding: 5px;
+    }
+    button {
+      width: 18%;
+      padding: 5px;
+      background: pink;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="chat">
+    <div id="messages"></div>
+    <input id="input" type="text" placeholder="Nhập tin nhắn...">
+    <button onclick="sendMessage()">Gửi</button>
+  </div>
+
+  <script>
+    function sendMessage() {
+      let input = document.getElementById('input');
+      let messages = document.getElementById('messages');
+      if(input.value.trim() !== '') {
+        let msg = document.createElement('div');
+        msg.textContent = input.value;
+        messages.appendChild(msg);
+        input.value = '';
+        messages.scrollTop = messages.scrollHeight;
+      }
+    }
+  </script>
+</body>
+</html>
